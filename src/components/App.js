@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import News from './News/News';
 
 function App() {
