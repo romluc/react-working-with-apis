@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NewSingle from 'NewSingle';
+import NewSingle from './NewSingle';
 
 class News extends Component {
   renderItems() {
