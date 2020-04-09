@@ -16,15 +16,20 @@ class App extends Component {
         type: `top-headlines`,
         query: `country=ca`,
       },
+      news3: {
+        type: `everything`,
+        query: `domains=comicbookmovie.com&languange=en`,
+      },
     };
   }
   render() {
+    const { news1, news2, news3 } = this.state;
     return (
       <div className='container-fluid'>
         <div className='navbar-fixed'>
           <nav>
             <div className='nav-wrapper teal lighten-2'>
-              <a href='/#' className='brand-logo center'>
+              <a href='/' className='brand-logo center'>
                 My News Feed
               </a>
             </div>
@@ -32,12 +37,12 @@ class App extends Component {
         </div>
         <div className='row'>
           <div className='col s8'>
-            <News section={this.state.news1} />
+            <News section={news1} />
             <Separator />
-            <News section={this.state.news2} />
+            <News section={news2} />
           </div>
           <div className='col s4'>
-            <Sidenews />
+            <Sidenews section={news3} />
           </div>
         </div>
       </div>
