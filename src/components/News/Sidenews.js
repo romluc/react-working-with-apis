@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
-import SingleSide from './SingleSide';
 import axios from 'axios';
+import SingleSide from './SingleSide';
+import Error from './Error';
+import '../App.css';
 
 class Sidenews extends Component {
   constructor(props) {
     super(props);
     this.state = {
       sidenews: [],
+      error: false,
+      source: 'Comicbookmovie.com',
     };
   }
 
@@ -23,17 +27,31 @@ class Sidenews extends Component {
           sidenews: res.data.articles,
         });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        this.setState({
+          error: true,
+        });
+      });
   }
 
   renderItems() {
-    return this.state.sidenews.map((item) => (
-      <SingleSide key={item.url} item={item} />
-    ));
+    if (!this.state.error) {
+      return this.state.sidenews.map((item) => (
+        <SingleSide key={item.url} item={item} />
+      ));
+    } else {
+      return <Error />;
+    }
   }
 
   render() {
-    return <div>{this.renderItems()}</div>;
+    return (
+      <div className='sidenews'>
+        <h2 className='sidenews__header'>More News</h2>
+        <h5>{this.state.source}</h5>
+        <div>{this.renderItems()}</div>
+      </div>
+    );
   }
 }
 

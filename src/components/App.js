@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import News from './News/News';
 import Sidenews from './News/Sidenews';
-import Separator from './Separator';
 
 class App extends Component {
   constructor(props) {
@@ -38,7 +37,6 @@ class App extends Component {
         <div className='row'>
           <div className='col s8'>
             <News section={news1} />
-            <Separator />
             <News section={news2} />
           </div>
           <div className='col s4'>
